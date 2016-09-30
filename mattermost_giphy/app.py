@@ -68,8 +68,7 @@ def new_post():
         resp_data_attachment['fallback'] = data['text']
         resp_data_attachment['pretext'] = data['text']
         resp_data_attachment['image_url'] = gif_url
-        resp_data_attachment_part = {}
-        resp_data_attachment_part[] = json.dumps(resp_data_attachment)
+        resp_data_attachment_part = [json.dumps(resp_data_attachment)]
         resp_data['attachments'] = resp_data_attachment_part
     except Exception as err:
         msg = err.message
