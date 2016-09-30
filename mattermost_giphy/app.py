@@ -64,13 +64,13 @@ def new_post():
         if not gif_url:
             raise Exception('No gif url found for `{}`'.format(translate_text))
 
-		resp_data['text'] = data['text']
         resp_data_attachment = {}
         resp_data_attachment['fallback'] = data['text']
         resp_data_attachment['pretext'] = data['text']
         resp_data_attachment['image_url'] = gif_url
         resp_data_attachment_part = [json.dumps(resp_data_attachment)]
         resp_data['attachments'] = resp_data_attachment_part
+        resp_data['text'] = data['text']
     except Exception as err:
         msg = err.message
         logging.error('unable to handle new post :: {}'.format(msg))
