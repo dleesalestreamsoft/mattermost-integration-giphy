@@ -37,6 +37,8 @@ def new_post():
         # NOTE: common stuff
         slash_command = False
         resp_data = {}
+        resp_data['username'] = USERNAME
+        resp_data['icon_url'] = ICON_URL
 
         data = request.form
 
@@ -49,6 +51,7 @@ def new_post():
         # NOTE: support the slash command
         if 'command' in data:
             slash_command = True
+            resp_data['response_type'] = 'in_channel'
 
         translate_text = data['text']
         if not slash_command:
@@ -61,6 +64,7 @@ def new_post():
         if not gif_url:
             raise Exception('No gif url found for `{}`'.format(translate_text))
 
+		resp_data['text'] = data['text']
         resp_data_attachment = {}
         resp_data_attachment['fallback'] = data['text']
         resp_data_attachment['pretext'] = data['text']
