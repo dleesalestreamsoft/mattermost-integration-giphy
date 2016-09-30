@@ -37,8 +37,6 @@ def new_post():
         # NOTE: common stuff
         slash_command = False
         resp_data = {}
-        resp_data['username'] = USERNAME
-        resp_data['icon_url'] = ICON_URL
 
         data = request.form
 
@@ -51,7 +49,6 @@ def new_post():
         # NOTE: support the slash command
         if 'command' in data:
             slash_command = True
-            resp_data['response_type'] = 'in_channel'
 
         translate_text = data['text']
         if not slash_command:
