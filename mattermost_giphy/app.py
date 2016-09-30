@@ -67,6 +67,8 @@ def new_post():
         resp_data_attachment = {}
         resp_data_attachment['fallback'] = data['text']
         resp_data_attachment['pretext'] = data['text']
+        resp_data_attachment['text'] = data['text']
+        resp_data_attachment['color'] = '#59afe1'
         resp_data_attachment['image_url'] = gif_url
         resp_data_attachment_part = [json.dumps(resp_data_attachment)]
         resp_data['attachments'] = resp_data_attachment_part
